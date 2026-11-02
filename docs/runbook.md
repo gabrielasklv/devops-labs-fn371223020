@@ -45,3 +45,19 @@ docker logs -f notes      # Ctrl+C to stop watching
 docker stop notes         # stop the container
 docker rm notes           # delete the container
 ```
+
+## Run with Compose
+
+Prerequisite: copy `.env.example` to `.env` and set a real password.
+
+| Task | Command |
+|---|---|
+| Start (build if needed) | `docker compose up -d --build` |
+| Status / health | `docker compose ps` |
+| Follow app logs | `docker compose logs -f app` |
+| Start with Adminer (port 8081) | `docker compose --profile tools up -d` |
+| Stop, **keep data** | `docker compose down` |
+| Stop, **delete data** | `docker compose down -v` |
+
+**Important:** `down` keeps the `db-data` volume, so notes survive.
+`down -v` deletes the volume, and all notes are lost.

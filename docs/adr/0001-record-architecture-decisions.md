@@ -13,3 +13,5 @@ Every significant decision is written as a short file in `docs/adr/`, copied fro
 ## Consequences
 
 New team members can read why, not only what.
+
+Accepted in Lab 4: PostgreSQL 17 runs via Docker Compose with a named volume.
