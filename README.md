@@ -1,4 +1,6 @@
 # Notes API: учебно приложение за курса по DevOps
+[![CI](https://github.com/gabrielasklv/devops-labs-fn371223020/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/gabrielasklv/devops-labs-fn371223020/actions/workflows/ci.yml)
+
 
 **Български** · [English](#notes-api--devops-course-starter-app)
 
