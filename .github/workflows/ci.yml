@@ -35,3 +35,18 @@ jobs:
         run: ruff check .
       - name: Tests
         run: pytest -v
+   
+  build:
+    needs: test
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+    
+      - name: Build image
+        run: docker build -t notes-api:${{ github.sha }} .
+
+      - name: Smoke test
+        run: |
+          docker run -d --name app -p 8000:8000 notes-api:${{ github.sha }}
+          for _ in $(seq 1 20); do curl -fs localhost:8000/health && exit 0; sleep 1; done
+          docker logs app; exit 1
