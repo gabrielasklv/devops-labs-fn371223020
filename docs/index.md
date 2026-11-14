@@ -14,3 +14,5 @@ Preview locally / Локален преглед:
 pip install -r requirements-docs.txt
 mkdocs serve
 ```
+
+_This site is built and published automatically by CI._
