@@ -104,3 +104,30 @@
         name: notes
         state: restarted
         daemon_reload: true
+
+
+- name: Load balancer
+  hosts: lb
+  become: true
+  tasks:
+    - name: Install nginx
+      ansible.builtin.apt:
+        name: nginx
+
+    - name: Configure nginx as load balancer
+      ansible.builtin.template:
+        src: templates/nginx.conf.j2
+        dest: /etc/nginx/sites-available/default
+      notify: Reload nginx
+
+    - name: Make sure nginx is running
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+
+  handlers:
+    - name: Reload nginx
+      ansible.builtin.service:
+        name: nginx
+        state: reloaded
