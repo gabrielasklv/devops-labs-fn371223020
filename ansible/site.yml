@@ -1,0 +1,12 @@
+- name: Base for every server
+  hosts: all
+  become: true
+  tasks:
+    - name: Install base packages
+      ansible.builtin.apt:
+        name:
+          - curl
+          - ca-certificates
+          - acl
+        update_cache: true
+        cache_valid_time: 3600
